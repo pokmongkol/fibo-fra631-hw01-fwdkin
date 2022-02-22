@@ -15,12 +15,12 @@ TH4 = 0 # DEGREE
 TH5 = 0 # DEGREE
 TH6 = 0 # DEGREE
 
-L0 = 1
-L1 = 1
-L2 = 1
-L3 = 0
-L4 = 0
-L5 = 0
+L0 = 40
+L1 = 35
+L2 = 10
+L3 = 15
+L4 = 23
+L5 = 30
 
 ## DEGREE TO RADIUS.
 TH1 = (TH1/180.0)*np.pi
@@ -36,7 +36,7 @@ T0 = htTranslateZ(L0)
 R0 = htRotateZ(TH1)
 # print('R0 = ', np.matrix(R0))
 H01 = np.dot(T0, R0)
-# print('H01 = ', np.matrix(H01))
+print('H01 = ', np.matrix(H01))
 
 ## FRAME2.
 T1 = htTranslateZ(L1)
