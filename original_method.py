@@ -1,4 +1,5 @@
 import numpy as np
+np.set_printoptions(formatter={'float': lambda x: "{0:0.3f}".format(x)})
 
 def htTranslateZ(L):
     return [[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, L], [0, 0, 0, 1]]
@@ -8,12 +9,12 @@ def htRotateZ(TH):
     return [[np.cos(TH), -1*np.sin(TH), 0, 0], [np.sin(TH), np.cos(TH), 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]
 
 ## PARAMETERS.
-TH1 = 30 # DEGREE
-TH2 = 0 # DEGREE
-TH3 = 60 # DEGREE
-TH4 = 0 # DEGREE
-TH5 = 0 # DEGREE
-TH6 = 0 # DEGREE
+TH1 = 0.247 # DEGREE
+TH2 = -90.697 # DEGREE
+TH3 = 181.09 # DEGREE
+TH4 = 360.922 # DEGREE
+TH5 = 90.241 # DEGREE
+TH6 = -0.333 # DEGREE
 
 L0 = 40
 L1 = 35
@@ -44,7 +45,7 @@ T1 = htTranslateZ(L1)
 R1 = htRotateY(TH2)
 # print('R1 = ', np.matrix(R1))
 H12 = np.dot(T1, R1)
-# print('H12 = ', np.matrix(H12))
+print('H12 = ', np.matrix(H12))
 
 ## FRAME3.
 T2 = htTranslateZ(L2)
@@ -52,7 +53,7 @@ T2 = htTranslateZ(L2)
 R2 = htRotateY(TH3)
 # print('R2 = ', np.matrix(R2))
 H23 = np.dot(T2, R2)
-# print('H23 = ', np.matrix(H23))
+print('H23 = ', np.matrix(H23))
 
 ## FRAME4.
 T3 = htTranslateZ(L3)
@@ -60,7 +61,7 @@ T3 = htTranslateZ(L3)
 R3 = htRotateZ(TH4)
 # print('R3 = ', np.matrix(R3))
 H34 = np.dot(T3, R3)
-# print('H34 = ', np.matrix(H34))
+print('H34 = ', np.matrix(H34))
 
 ## FRAME5.
 T4 = htTranslateZ(L4)
@@ -68,7 +69,7 @@ T4 = htTranslateZ(L4)
 R4 = htRotateY(TH5)
 # print('R4 = ', np.matrix(R4))
 H45 = np.dot(T4, R4)
-# print('H45 = ', np.matrix(H45))
+print('H45 = ', np.matrix(H45))
 
 ## FRAME6.
 T5 = htTranslateZ(L5)
@@ -76,8 +77,8 @@ T5 = htTranslateZ(L5)
 R5 = htRotateY(TH6)
 # print('R5 = ', np.matrix(R5))
 H56 = np.dot(T5, R5)
-# print('H56 = ', np.matrix(H56))
+print('H56 = ', np.matrix(H56))
 
-# HOMOGENEOUS TRANSFORMATION.
+## HOMOGENEOUS TRANSFORMATION.
 H06 = np.linalg.multi_dot([H01, H12, H23, H34, H45, H56])
 print('H06 = ', np.matrix(H06))

@@ -1,20 +1,21 @@
 import numpy as np
+np.set_printoptions(formatter={'float': lambda x: "{0:0.3f}".format(x)})
 
 def DH(a, alpha, d, theta):
-    return np.round([
+    return [
         [np.cos(theta), -1*np.cos(alpha)*np.sin(theta), np.sin(alpha)*np.sin(theta), a*np.cos(theta)],
         [np.sin(theta), np.cos(alpha)*np.cos(theta), -1*np.sin(alpha)*np.cos(theta), a*np.sin(theta)],
         [0, np.sin(alpha), np.cos(alpha), d],
         [0, 0, 0, 1],
-    ], 3)
+    ]
 
 ## PARAMETERS.
-TH1 = 30 # DEGREE
-TH2 = 0 # DEGREE
-TH3 = 60 # DEGREE
-TH4 = 0 # DEGREE
-TH5 = 0 # DEGREE
-TH6 = 0 # DEGREE
+TH1 = 0.247 # DEGREE
+TH2 = -90.697 # DEGREE
+TH3 = 181.09 # DEGREE
+TH4 = 360.922 # DEGREE
+TH5 = 90.241 # DEGREE
+TH6 = -0.333 # DEGREE
 
 ALP1 = 0 # DEGREE
 ALP2 = -90 # DEGREE
@@ -70,5 +71,5 @@ print('H05 = ', np.matrix(H45))
 H56 = DH(A6, ALP6, D6, TH6)
 print('H06 = ', np.matrix(H56))
 ## HOMOGENEOUS TRANSFORMATION.
-H06 = np.round(np.linalg.multi_dot([H01, H12, H23, H34, H45, H56]), 3)
+H06 = np.linalg.multi_dot([H01, H12, H23, H34, H45, H56])
 print('H06 = ', np.matrix(H06))
